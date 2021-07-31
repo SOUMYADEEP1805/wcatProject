@@ -16,21 +16,7 @@ for(let i=0;i<inputArr.length;i++){
     }
 
 }
-// b n check
-let isBothpresent = options.includes("-n") && options.includes("-b");
-let idxOfN, idxOfB;
 
-if(isBothpresent){
-    for(let i = 0; i < options.length; i++){
-        if(options[i] == "-n"){
-            idxOfN = i;
-        }
-        if(options[i] == "-b"){
-            idxOfB = i;
-        }
-    }
-}
-    
 
 // existtance check
 for(let i=0;i<fileArr.length;i++){
@@ -81,29 +67,68 @@ if(isSpresent == true){
         }
     }
     arrOfContent = tempContent;
-   
+    
 }
-if(idxOfN<idxOfB){
-    let isNpresent  = options.includes("-n");
-    if(isNpresent == true){
-        for(let i = 0;i<arrOfContent.length;i++){
-            arrOfContent[i] = `${i+1} ${arrOfContent[i]}`;
+// b n check
+let isBothpresent = options.includes("-n") && options.includes("-b");
+let idxOfN, idxOfB;
+
+if(isBothpresent){
+    for(let i = 0; i < options.length; i++){
+        if(options[i] == "-n"){
+            idxOfN = i;
+        }
+        if(options[i] == "-b"){
+            idxOfB = i;
         }
     }
-}
-
-if(idxOfB<idxOfN){
-    let isBpresent  = options.includes("-b");
-    if(isBpresent == true){
-        let counter = 1;
-        for(let i = 0;i<arrOfContent.length;i++){
-            if(arrOfContent[i] != ""){
-                arrOfContent[i] = `${counter} ${arrOfContent[i]}`;
-                counter++;
+    if(idxOfN<idxOfB){
+        let isNpresent  = options.includes("-n");
+        if(isNpresent == true){
+            for(let i = 0;i<arrOfContent.length;i++){
+                arrOfContent[i] = `${i+1} ${arrOfContent[i]}`;
             }
         }
     }
+    
+    if(idxOfB<idxOfN) {
+        let isBpresent  = options.includes("-b");
+        if(isBpresent == true){
+            let counter = 1;
+            for(let i = 0;i<arrOfContent.length;i++){
+                if(arrOfContent[i] != ""){
+                    arrOfContent[i] = `${counter} ${arrOfContent[i]}`;
+                    counter++;
+                }
+            }
+        }
+    }
+
+}else{
+    // if(idxOfN<idxOfB){
+        let isNpresent  = options.includes("-n");
+        if(isNpresent == true){
+            for(let i = 0;i<arrOfContent.length;i++){
+                arrOfContent[i] = `${i+1} ${arrOfContent[i]}`;
+            }
+        }
+    // }
+    
+    // if(idxOfB<idxOfN) {
+        let isBpresent  = options.includes("-b");
+        if(isBpresent == true){
+            let counter = 1;
+            for(let i = 0;i<arrOfContent.length;i++){
+                if(arrOfContent[i] != ""){
+                    arrOfContent[i] = `${counter} ${arrOfContent[i]}`;
+                    counter++;
+                }
+            }
+        }
+    // }
 }
+
+
 
 
 console.log(arrOfContent.join("\n"));
